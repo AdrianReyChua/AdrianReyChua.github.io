@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adrian Rey Chua — Digital Marketing Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0c0b09;
+    --bg2: #141310;
+    --bg3: #1c1a17;
+    --surface: #222019;
+    --border: rgba(255,255,255,0.07);
+    --border2: rgba(255,255,255,0.13);
+    --text: #f0ece3;
+    --muted: #8a8474;
+    --accent: #c9a84c;
+    --accent2: #e8c96e;
+    --accent-dim: rgba(201,168,76,0.12);
+    --red: #c9584c;
+    --green: #5aa67a;
+    --serif: 'Playfair Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 3rem;
+    background: rgba(12,11,9,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  .nav-cta {
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    padding: 0.55rem 1.4rem;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+  /* SECTIONS */
+  section { padding: 6rem 3rem; max-width: 1200px; margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding-top: 8rem;
+    max-width: none;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 2rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--accent);
+  }
+
+  .hero-h1 {
+    font-family: var(--serif);
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    max-width: 900px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-h1 em { font-style: italic; color: var(--accent); }
+
+  .hero-bottom {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 3rem;
+    border-top: 1px solid var(--border);
+    padding-top: 2rem;
+    flex-wrap: wrap; gap: 2rem;
+  }
+
+  .hero-desc {
+    max-width: 420px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex; gap: 3rem;
+  }
+
+  .stat-item { text-align: right; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.35rem;
+  }
+
+  /* TICKER */
+  .ticker-wrap {
+    background: var(--accent);
+    overflow: hidden;
+    padding: 0.75rem 0;
+  }
+  .ticker-inner {
+    display: flex; gap: 0;
+    animation: ticker 28s linear infinite;
+    white-space: nowrap;
+  }
+  .ticker-item {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--bg); padding: 0 2.5rem;
+    display: flex; align-items: center; gap: 1.5rem;
+  }
+  .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: rgba(12,11,9,0.35); }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ABOUT */
+  #about { border-bottom: 1px solid var(--border); }
+
+  .section-label {
+    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 3.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border2);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+
+  .about-h2 em { font-style: italic; color: var(--accent); }
+
+  .about-body { color: var(--muted); font-size: 0.95rem; line-height: 1.85; font-weight: 300; }
+
+  .experience-list { margin-top: 2.5rem; }
+  .exp-item {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .exp-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .exp-role { font-weight: 500; font-size: 0.9rem; margin-bottom: 0.2rem; }
+  .exp-company { color: var(--accent); font-size: 0.82rem; }
+  .exp-period {
+    font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted);
+    text-align: right; white-space: nowrap; margin-left: 1rem;
+  }
+
+  /* METRICS BAND */
+  .metrics-band {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 5rem;
+  }
+  .metrics-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  }
+  .metric-box {
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+  }
+  .metric-box:last-child { border-right: none; }
+
+  .metric-num {
+    font-family: var(--serif);
+    font-size: 3.5rem; font-weight: 700;
+    color: var(--accent2);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .metric-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+  .metric-sub {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.5rem; opacity: 0.6;
+  }
+
+  /* SKILLS */
+  #skills { border-bottom: 1px solid var(--border); }
+
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .skill-card {
+    background: var(--bg);
+    padding: 2.5rem;
+    transition: background 0.25s;
+    position: relative; overflow: hidden;
+  }
+  .skill-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
+    background: var(--accent);
+    transition: height 0.3s ease;
+  }
+  .skill-card:hover { background: var(--bg3); }
+  .skill-card:hover::before { height: 100%; }
+
+  .skill-num {
+    font-family: var(--serif);
+    font-size: 0.72rem; color: var(--muted); margin-bottom: 1.25rem;
+  }
+
+  .skill-title {
+    font-size: 1.05rem; font-weight: 500; margin-bottom: 0.75rem;
+  }
+  .skill-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+  .skill-tools {
+    margin-top: 1.25rem;
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+  }
+  .tool-tag {
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border: 1px solid var(--border2);
+    color: var(--muted);
+    border-radius: 2px;
+  }
+
+  /* CERTIFICATIONS */
+  #certifications { border-bottom: 1px solid var(--border); }
+
+  .cert-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+
+  .cert-item {
+    display: flex; align-items: center; gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: border-color 0.2s;
+  }
+  .cert-item:hover { border-color: var(--accent); }
+
+  .cert-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent-dim);
+    border: 1px solid rgba(201,168,76,0.25);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 0.7rem; font-weight: 700; color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .cert-name { font-size: 0.82rem; font-weight: 500; }
+  .cert-org { font-size: 0.72rem; color: var(--muted); margin-top: 0.1rem; }
+
+  /* FAQ / CONTACT */
+  #contact { border-bottom: 1px solid var(--border); }
+
+  .contact-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start;
+  }
+
+  .contact-h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 400; line-height: 1.2; margin-bottom: 1.5rem;
+  }
+  .contact-h2 em { font-style: italic; color: var(--accent); }
+  .contact-body { color: var(--muted); font-size: 0.9rem; line-height: 1.85; margin-bottom: 2.5rem; }
+
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1.1rem 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: var(--bg3); }
+  .contact-link-label { flex: 1; }
+  .contact-link-icon { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.1em; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+    cursor: pointer;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .faq-question {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.9rem; font-weight: 500;
+    user-select: none;
+  }
+  .faq-toggle { color: var(--accent); font-size: 1.2rem; transition: transform 0.2s; }
+  .faq-answer {
+    font-size: 0.82rem; color: var(--muted);
+    line-height: 1.8;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s ease, margin-top 0.2s;
+  }
+  .faq-item.open .faq-answer { max-height: 200px; margin-top: 0.75rem; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap; gap: 1.5rem;
+  }
+  .footer-name {
+    font-family: var(--serif); font-size: 1rem; color: var(--muted);
+  }
+  .footer-links { display: flex; gap: 2rem; }
+  .footer-links a {
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent); }
+  .footer-copy { font-size: 0.72rem; color: var(--muted); }
+
+  /* SCROLL ANIMATIONS */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* UTILITY */
+  .badge {
+    display: inline-block;
+    font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    background: var(--accent-dim);
+    color: var(--accent);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+
+  @media (max-width: 900px) {
+    #hero { padding-left: 2rem; padding-right: 2rem; }
+    nav { padding: 1rem 2rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 2rem; }
+    .about-grid, .contact-grid, .cert-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .metrics-grid { grid-template-columns: 1fr 1fr; }
+    .metric-box { border-right: none; border-bottom: 1px solid var(--border); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .metrics-band { padding: 3rem 2rem; }
+    footer { padding: 2rem; }
+    .hero-stats { flex-direction: column; gap: 1.5rem; }
+    .stat-item { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Adrian Rey Chua</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Expertise</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="mailto:adreychua615@gmail.com" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-eyebrow">Available for work</div>
+  <h1 class="hero-h1">
+    Adrian Rey Chua,<br/>
+    <em>Digital Marketing</em><br/>
+    Specialist &amp; Brand Strategist
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      3+ years driving measurable growth through multi-channel campaigns, e-commerce optimization, and brand activations. Magna Cum Laude, University of San Carlos.
+    </p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">39%</div>
+        <div class="stat-label">Online Sales Growth</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">42%</div>
+        <div class="stat-label">Organic Traffic Boost</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">300+</div>
+        <div class="stat-label">Affiliate Partners</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <!-- repeated twice for seamless loop -->
+    <div class="ticker-item">SEO &amp; SEM <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Paid Ads <span class="ticker-dot"></span></div>
+    <div class="ticker-item">TikTok Shop <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Content Strategy <span class="ticker-dot"></span></div>
+    <div class="ticker-item">E-commerce <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Brand Activation <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Marketing Automation <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Influencer Marketing <span class="ticker-dot"></span></div>
+    <div class="ticker-item">SEO &amp; SEM <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Paid Ads <span class="ticker-dot"></span></div>
+    <div class="ticker-item">TikTok Shop <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Content Strategy <span class="ticker-dot"></span></div>
+    <div class="ticker-item">E-commerce <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Brand Activation <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Marketing Automation <span class="ticker-dot"></span></div>
+    <div class="ticker-item">Influencer Marketing <span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// About me</div>
+  <div class="about-grid">
+    <div class="reveal">
+      <h2 class="about-h2">Not just a marketer — a <em>growth architect</em></h2>
+      <p class="about-body">
+        I'm a Digital Marketing and Brand Specialist with a track record of turning strategy into results. From launching TikTok Shops that moved the sales needle in month one, to landing nine high-intent keywords on page one of Google — every campaign I run is built on data, creativity, and relentless iteration.
+      </p>
+      <p class="about-body" style="margin-top: 1rem;">
+        I graduated Magna Cum Laude (GPA 1.4) with a BS in Business Administration, Major in Marketing Management, from the University of San Carlos, Cebu. C2 Advanced proficiency in English.
+      </p>
+    </div>
+    <div class="reveal" style="transition-delay: 0.15s;">
+      <div class="experience-list">
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Digital Marketing Specialist</div>
+            <div class="exp-company">Expiwell</div>
+          </div>
+          <div class="exp-period">Aug 2025 – May 2026</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Brand Officer</div>
+            <div class="exp-company">International Pharmaceuticals Inc.</div>
+          </div>
+          <div class="exp-period">Aug 2024 – Nov 2025</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Social Media Associate</div>
+            <div class="exp-company">Sachibestramencorp</div>
+          </div>
+          <div class="exp-period">Aug 2023 – Feb 2024</div>
+        </div>
+        <div class="exp-item">
+          <div>
+            <div class="exp-role">Digital Marketing Associate</div>
+            <div class="exp-company">Ichi Ryu Ventures</div>
+          </div>
+          <div class="exp-period">Aug 2020 – Feb 2021</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METRICS BAND -->
+<div class="metrics-band">
+  <div class="metrics-grid">
+    <div class="metric-box reveal">
+      <div class="metric-num">+2109%</div>
+      <div class="metric-desc">TikTok engagement growth at Sachibestramencorp</div>
+      <div class="metric-sub">Social Media</div>
+    </div>
+    <div class="metric-box reveal" style="transition-delay:0.1s;">
+      <div class="metric-num">93+</div>
+      <div class="metric-desc">Digital assets delivered per quarter at Expiwell</div>
+      <div class="metric-sub">Content Production</div>
+    </div>
+    <div class="metric-box reveal" style="transition-delay:0.2s;">
+      <div class="metric-num">21K</div>
+      <div class="metric-desc">Participants across 2 on-ground fun-run events</div>
+      <div class="metric-sub">Events & Activations</div>
+    </div>
+    <div class="metric-box reveal" style="transition-delay:0.3s;">
+      <div class="metric-num">3× ROAS</div>
+      <div class="metric-desc">Return on ad spend via A/B-tested paid campaigns</div>
+      <div class="metric-sub">Paid Advertising</div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS / EXPERTISE -->
+<section id="skills">
+  <div class="section-label">// Expertise</div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-num">01</div>
+      <div class="skill-title">Search Engine Optimization</div>
+      <p class="skill-desc">Achieved first-page Google rankings for 9 high-intent keywords. Grew search visibility from 50.7% to 59.3% through on-page optimisation and targeted blog content.</p>
+      <div class="skill-tools">
+        <span class="tool-tag">Semrush</span>
+        <span class="tool-tag">Google Analytics</span>
+        <span class="tool-tag">On-page SEO</span>
+        <span class="tool-tag">Keyword Research</span>
+      </div>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.1s;">
+      <div class="skill-num">02</div>
+      <div class="skill-title">Paid Advertising</div>
+      <p class="skill-desc">Managed Google, Facebook & Instagram ads end-to-end. Boosted CTR by 18%, conversions by 12%, and achieved 3× ROAS through disciplined A/B testing.</p>
+      <div class="skill-tools">
+        <span class="tool-tag">Meta Ads</span>
+        <span class="tool-tag">Google Ads</span>
+        <span class="tool-tag">A/B Testing</span>
+        <span class="tool-tag">ROAS Tracking</span>
+      </div>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.2s;">
+      <div class="skill-num">03</div>
+      <div class="skill-title">E-commerce & Marketplaces</div>
+      <p class="skill-desc">Launched TikTok Shop, live-selling, Lazada & Shopee via Shopify — increasing online sales 39% within the first month. Experienced in marketplace optimisation and fulfillment flows.</p>
+      <div class="skill-tools">
+        <span class="tool-tag">TikTok Shop</span>
+        <span class="tool-tag">Lazada</span>
+        <span class="tool-tag">Shopee</span>
+        <span class="tool-tag">Shopify</span>
+      </div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-num">04</div>
+      <div class="skill-title">Marketing Automation & CRM</div>
+      <p class="skill-desc">Reduced lead response time by 35% and improved conversions by 17% through automated workflows. Proficient in ZohoCRM, Zoho Campaigns, and Zoho Social.</p>
+      <div class="skill-tools">
+        <span class="tool-tag">ZohoCRM</span>
+        <span class="tool-tag">Zoho Campaigns</span>
+        <span class="tool-tag">HubSpot</span>
+        <span class="tool-tag">Email Automation</span>
+      </div>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.1s;">
+      <div class="skill-num">05</div>
+      <div class="skill-title">Brand Strategy & Activations</div>
+      <p class="skill-desc">Directed the launch of 2 pharmaceutical products from research to market. Produced 34 brand assets, 6 on-ground campaigns, and 2 fun runs reaching 21,000 participants.</p>
+      <div class="skill-tools">
+        <span class="tool-tag">Brand Identity</span>
+        <span class="tool-tag">Campaign Planning</span>
+        <span class="tool-tag">Event Management</span>
+        <span class="tool-tag">Influencer Mgmt</span>
+      </div>
+    </div>
+    <div class="skill-card reveal" style="transition-delay:0.2s;">
+      <div class="skill-num">06</div>
+      <div class="skill-title">Creative Production</div>
+      <p class="skill-desc">End-to-end creative asset development — from UGC video to motion graphics. Skilled in CapCut, Canva, Adobe After Effects & Premiere Pro, Figma.</p>
+      <div class="skill-tools">
+        <span class="tool-tag">CapCut</span>
+        <span class="tool-tag">Canva</span>
+        <span class="tool-tag">After Effects</span>
+        <span class="tool-tag">Figma</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">// Certifications</div>
+  <div class="cert-grid">
+    <div class="cert-item reveal">
+      <div class="cert-icon">HS</div>
+      <div>
+        <div class="cert-name">SEO Certification</div>
+        <div class="cert-org">HubSpot Academy</div>
+      </div>
+    </div>
+    <div class="cert-item reveal" style="transition-delay:0.07s;">
+      <div class="cert-icon">HS</div>
+      <div>
+        <div class="cert-name">SEO II Certification</div>
+        <div class="cert-org">HubSpot Academy</div>
+      </div>
+    </div>
+    <div class="cert-item reveal" style="transition-delay:0.14s;">
+      <div class="cert-icon">SR</div>
+      <div>
+        <div class="cert-name">SEO Essentials with Semrush</div>
+        <div class="cert-org">Semrush Academy</div>
+      </div>
+    </div>
+    <div class="cert-item reveal" style="transition-delay:0.21s;">
+      <div class="cert-icon">SR</div>
+      <div>
+        <div class="cert-name">Keyword Research Essentials</div>
+        <div class="cert-org">Semrush Academy</div>
+      </div>
+    </div>
+    <div class="cert-item reveal" style="transition-delay:0.28s;">
+      <div class="cert-icon">SR</div>
+      <div>
+        <div class="cert-name">On-Page SEO Essentials</div>
+        <div class="cert-org">Semrush Academy</div>
+      </div>
+    </div>
+    <div class="cert-item reveal" style="transition-delay:0.35s;">
+      <div class="cert-icon">SR</div>
+      <div>
+        <div class="cert-name">International SEO</div>
+        <div class="cert-org">Semrush Academy</div>
+      </div>
+    </div>
+    <div class="cert-item reveal" style="transition-delay:0.42s;">
+      <div class="cert-icon">GA</div>
+      <div>
+        <div class="cert-name">Google Analytics 101 – 301</div>
+        <div class="cert-org">Google SkillShop (4 Certs)</div>
+      </div>
+    </div>
+    <div class="cert-item reveal" style="transition-delay:0.49s;">
+      <div class="cert-icon">GA</div>
+      <div>
+        <div class="cert-name">GA Advanced: Tools &amp; Data Sources</div>
+        <div class="cert-org">Google SkillShop</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">// Get in touch</div>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h2 class="contact-h2">Let's build something <em>worth measuring</em></h2>
+      <p class="contact-body">
+        Whether you're scaling a brand, launching on a new channel, or rebuilding your organic presence — I'd love to talk. Based in Lapu-Lapu City, Cebu, Philippines. Open to remote and hybrid roles.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:adreychua615@gmail.com" class="contact-link">
+          <span class="contact-link-label">adreychua615@gmail.com</span>
+          <span class="contact-link-icon">Email →</span>
+        </a>
+        <a href="tel:+639694103260" class="contact-link">
+          <span class="contact-link-label">+63 969 410 3260</span>
+          <span class="contact-link-icon">Call →</span>
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener" class="contact-link">
+          <span class="contact-link-label">LinkedIn Profile</span>
+          <span class="contact-link-icon">LinkedIn →</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:0.15s;">
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">
+            What types of roles are you open to?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            I'm open to full-time, part-time, and freelance digital marketing roles — including Digital Marketing Manager, Brand Strategist, SEO Specialist, and Growth Marketer positions. Remote, hybrid, or onsite in Cebu.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Can you handle both strategy and execution?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes. I've owned campaigns end-to-end — from research and planning through creative production, channel management, and post-campaign analytics. I'm equally comfortable in IC and team-lead capacities.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            What industries have you worked in?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Pharmaceuticals, SaaS/tech (Expiwell), F&amp;B, and consumer goods. I adapt quickly to new verticals — my playbook is built around data and audience insight, not industry templates.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            Do you manage ad budgets?
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes. I've managed Google and Meta ad budgets, optimised bids through A/B testing, and consistently improved ROAS. I track every peso spent against campaign KPIs.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Adrian Rey Chua</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#skills">Expertise</a>
+    <a href="#certifications">Certifications</a>
+    <a href="mailto:adreychua615@gmail.com">Email</a>
+  </div>
+  <div class="footer-copy">© 2026 · Lapu-Lapu City, Cebu, Philippines</div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-question').addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
